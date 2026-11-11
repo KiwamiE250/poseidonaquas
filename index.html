@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Посейдон — служба доставки питьевой воды в Якутске</title>
+<meta name="description" content="Служба доставки артезианской питьевой воды «Посейдон» в Якутске. Вода 19 л после 7 ступеней очистки. Быстрая доставка, бонусная система, собственное приложение.">
+<meta property="og:title" content="Посейдон — служба доставки питьевой воды">
+<meta property="og:description" content="Чистая артезианская вода 19 л с быстрой доставкой по Якутску.">
+<meta property="og:image" content="https://f1c324d9-e505-461a-bdef-1bfd3d197819.selstorage.ru/medium_banner_2_3de144b378.png">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0b2b4a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Unbounded:wght@500;700&display=swap&subset=cyrillic" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Unbounded:wght@500;700&display=swap&subset=cyrillic" rel="stylesheet"></noscript>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--deep:#0b2b4a;--blue:#1a6fb0;--aqua:#2ec4e6;--foam:#eaf6fc;--line:#d3e4ee;--gray:#5a7a8a;--err:#d9363e;--disp:'Unbounded','Manrope',sans-serif}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{font:400 1rem/1.65 'Manrope',system-ui,sans-serif;color:var(--deep);background:#fff;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body.lock{overflow:hidden}
+[hidden]{display:none!important}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+h1,h2{font-family:var(--disp);font-weight:700;line-height:1.14;letter-spacing:-.01em}
+:focus-visible{outline:3px solid var(--aqua);outline-offset:3px}
+.wrap{width:min(1180px,92%);margin-inline:auto}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 28px;border-radius:12px;border:2px solid transparent;font:700 1rem 'Manrope',sans-serif;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.btn-aqua{background:var(--aqua);color:var(--deep)}.btn-aqua:hover{background:#6fdcf2}
+.btn-blue{background:var(--blue);color:#fff}.btn-blue:hover{background:var(--deep)}
+.btn-line{border-color:rgba(255,255,255,.5);color:#fff;background:transparent}.btn-line:hover{background:rgba(255,255,255,.12)}
+.btn-sm{padding:10px 20px;font-size:.9rem}
+
+/* шапка */
+.hd{position:fixed;inset:0 0 auto;z-index:50;padding:16px 0;color:#fff;transition:background .25s,color .25s,padding .25s}
+.hd.on{background:#fff;color:var(--deep);padding:9px 0;box-shadow:0 1px 0 var(--line)}
+.hd .wrap{display:flex;align-items:center;gap:28px}
+.logo{display:flex;align-items:center;gap:10px;font:700 1.05rem var(--disp)}
+.logo img{width:42px;height:42px;border-radius:50%;object-fit:cover}
+.hd nav{display:flex;gap:24px;margin-left:auto;font-weight:600;font-size:.9rem}
+.hd nav a{opacity:.85;transition:opacity .2s,color .2s}.hd nav a:hover{opacity:1;color:var(--aqua)}
+.hd.on nav a:hover{color:var(--blue)}
+.tel{font-weight:700;font-size:.92rem;white-space:nowrap}
+
+/* главный экран */
+.hero{position:relative;background:var(--deep);color:#fff;overflow:hidden;padding-top:140px}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 78% 22%,rgba(46,196,230,.20),transparent 42%),radial-gradient(ellipse at 12% 88%,rgba(26,111,176,.28),transparent 46%);opacity:1}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,var(--deep) 35%,rgba(11,43,74,.5))}
+.hero .wrap{position:relative;z-index:1}
+.hero-grid{display:grid;grid-template-columns:1.3fr .7fr;gap:40px;align-items:end}
+.hero h1{font-size:clamp(1.8rem,4.2vw,3.3rem);margin-bottom:22px}
+.hero h1 small{display:block;margin-top:14px;font:500 clamp(1rem,2vw,1.4rem) var(--disp);color:var(--aqua)}
+.hero p{max-width:480px;color:rgba(255,255,255,.82);font-size:1.05rem;margin-bottom:32px}
+.acts{display:flex;flex-wrap:wrap;gap:12px}
+.hero-img{position:relative;justify-self:center;width:min(320px,80%);margin-bottom:-10px}
+.hero-img::before{content:"";position:absolute;left:50%;bottom:0;width:115%;aspect-ratio:1;transform:translateX(-50%);border-radius:50%;background:radial-gradient(circle at 32% 28%,rgba(46,196,230,.6),rgba(26,111,176,.35) 70%)}
+.hero-img img{position:relative;width:auto;height:auto;max-height:420px;object-fit:contain;margin-inline:auto;filter:drop-shadow(0 24px 30px rgba(0,0,0,.35))}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);margin-top:56px;padding-bottom:64px;border-top:1px solid rgba(255,255,255,.2)}
+.facts div{padding:22px 18px 0 20px;border-left:1px solid rgba(255,255,255,.2)}
+.facts div:first-child{padding-left:0;border-left:0}
+.facts b{display:block;font:700 1.2rem var(--disp)}
+.facts span{font-size:.85rem;color:rgba(255,255,255,.7)}
+.wave{position:absolute;z-index:2;bottom:-1px;left:0;width:100%;line-height:0}
+.wave svg{width:100%;height:56px}
+@media(prefers-reduced-motion:no-preference){
+ .hero .txt>*{opacity:0;animation:up .7s ease forwards}
+ .hero .txt>:nth-child(2){animation-delay:.12s}.hero .txt>:nth-child(3){animation-delay:.24s}
+ .hero-img{opacity:0;animation:up .9s .3s ease forwards}
+ @keyframes up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+}
+
+/* секции */
+.sec{padding:96px 0;content-visibility:auto;contain-intrinsic-size:1px 720px}
+.sec.foam{background:var(--foam)}
+.sec h2{font-size:clamp(1.5rem,3vw,2.2rem);margin-bottom:12px}
+.lead{color:var(--gray);max-width:540px}
+.head{margin-bottom:44px}
+
+.why{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.adv{list-style:none;margin-top:28px}
+.adv li{display:grid;grid-template-columns:46px 1fr;gap:16px;padding:20px 0;border-top:1px solid var(--line)}
+.adv li:last-child{border-bottom:1px solid var(--line)}
+.adv i{width:46px;height:46px;border-radius:50%;background:var(--foam);color:var(--blue);display:grid;place-items:center}
+.adv svg{width:22px;height:22px}
+.adv h3{font-size:1.05rem}
+.adv p{font-size:.92rem;color:var(--gray)}
+.video{border-radius:20px;overflow:hidden;background:#000;box-shadow:0 24px 50px rgba(11,43,74,.2)}
+.video iframe{display:block;width:100%;aspect-ratio:16/9;border:0}
+.embed-placeholder{display:grid;place-items:center;text-align:center;color:#fff;background:linear-gradient(135deg,#0b2b4a,#1a6fb0);padding:24px;min-width:0}
+.video-placeholder{aspect-ratio:16/9;width:100%}
+.map-placeholder{width:100%;min-height:420px;height:100%;background:linear-gradient(135deg,#0b2b4a,#164d78)}
+.embed-placeholder-content{display:flex;flex-direction:column;align-items:center;gap:12px}
+.embed-placeholder-content>span{font-weight:700;font-size:1.1rem}
+.embed-placeholder-content small{font-size:.82rem;color:rgba(255,255,255,.75)}
+.embed-placeholder iframe{display:block;width:100%;height:100%;min-height:inherit;aspect-ratio:16/9;border:0}
+
+
+.promo img{display:block;width:100%;height:auto!important;max-width:100%;aspect-ratio:1500 / 606;object-fit:contain;object-position:center;border-radius:18px;margin:0 0 28px}
+.prod{display:grid;grid-template-columns:110px 1fr auto auto;gap:28px;align-items:center;padding:22px 0;border-top:1px solid var(--line)}
+.prod:last-child{border-bottom:1px solid var(--line)}
+.prod img{display:block;width:110px;height:130px;max-width:100%;max-height:none;object-fit:contain;object-position:center;aspect-ratio:auto;justify-self:center}
+.prod h3{font-size:1.15rem}
+.prod p{color:var(--gray);font-size:.92rem}
+.price{font:700 1.4rem var(--disp);white-space:nowrap}
+
+.zone{display:grid;grid-template-columns:.8fr 1.4fr;border-radius:24px;overflow:hidden;background:var(--deep);color:#fff}
+.zone .txt{padding:48px 40px;display:flex;flex-direction:column;justify-content:center;gap:16px;align-items:flex-start}
+.zone h2{font-size:clamp(1.4rem,2.6vw,2rem);margin:0}
+.zone p{color:rgba(255,255,255,.8)}
+.zone iframe{width:100%;height:100%;min-height:420px;border:0;display:block}
+
+/* Фотогалерея: сохраняем исходные пропорции каждого снимка */
+.gal{columns:3 220px;column-gap:12px}
+.gal img{width:100%;height:auto;max-width:100%;aspect-ratio:auto;object-fit:contain;display:block;margin:0 0 12px;border-radius:12px;break-inside:avoid}
+
+
+.app{display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:center;background:var(--blue);color:#fff;border-radius:24px;padding:56px;overflow:hidden}
+.app p{color:rgba(255,255,255,.85);margin:8px 0 28px;max-width:480px}
+.stores{display:flex;flex-wrap:wrap;gap:12px}
+.store{display:flex;align-items:center;gap:12px;background:var(--deep);color:#fff;padding:10px 20px;border-radius:12px;min-width:170px;transition:background .2s}
+.store:hover{background:#06182b}
+.store svg{width:28px;height:28px;flex-shrink:0}
+.store small{display:block;font-size:.68rem;opacity:.75;line-height:1.1}
+.store strong{font-size:.95rem;line-height:1.2}
+.app img{max-height:340px;margin-inline:auto;filter:drop-shadow(0 24px 30px rgba(0,0,0,.3))}
+
+.docs{display:flex;flex-wrap:wrap;gap:24px}
+.doc{width:170px}
+.doc img{width:100%;height:220px;object-fit:cover;border:1px solid var(--line);border-radius:8px;transition:border-color .2s}
+.doc:hover img{border-color:var(--aqua)}
+.doc span{display:block;margin-top:8px;font-weight:600;font-size:.9rem}
+
+.news{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:36px}
+/* Новости: не кадрируем и не растягиваем фотографии */
+.news img{display:block;width:100%;height:auto;max-width:100%;aspect-ratio:auto;object-fit:contain;object-position:center;border-radius:12px;margin:0 0 14px}
+
+.news time{font-size:.8rem;color:var(--gray)}
+.news h3{margin:2px 0 8px;font-size:1.05rem}
+.news p{font-size:.9rem;color:var(--gray)}
+
+.rev{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:40px}
+.rev blockquote{border-top:3px solid var(--aqua);padding-top:20px}
+.rev p{margin-bottom:20px}
+.who{display:flex;align-items:center;gap:12px;font-size:.95rem}
+.who i{width:42px;height:42px;border-radius:50%;background:var(--deep);color:#fff;display:grid;place-items:center;font:700 .85rem var(--disp);font-style:normal}
+.who small{display:block;color:var(--gray);font-size:.8rem}
+
+.ft{background:var(--deep);color:rgba(255,255,255,.75);padding:64px 0 28px}
+.ft-grid{display:grid;grid-template-columns:1.4fr .8fr 1fr;gap:40px;margin-bottom:44px}
+.ft .logo{color:#fff;margin-bottom:14px}
+.ft h4{color:#fff;margin-bottom:14px;font-size:.95rem}
+.ft nav,.ft .ct{display:grid;gap:8px}
+.ft a:hover{color:var(--aqua)}
+.ft-b{border-top:1px solid rgba(255,255,255,.15);padding-top:22px;font-size:.85rem}
+
+/* окна */
+.modal{position:fixed;inset:0;z-index:100;background:rgba(11,43,74,.88);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .2s;padding:16px;overflow-y:auto}
+.modal.on{opacity:1;pointer-events:auto}
+.box{background:#fff;border-radius:20px;padding:40px 36px;width:min(450px,100%);position:relative;transform:translateY(16px);transition:transform .25s}
+.modal.on .box{transform:none}
+.x{position:absolute;top:12px;right:16px;font-size:30px;line-height:1;color:var(--gray);background:none;border:0;cursor:pointer}
+.x:hover{color:var(--deep)}
+.box h3{font:700 1.3rem var(--disp);margin-bottom:6px}
+.box>p{color:var(--gray);font-size:.92rem;margin-bottom:22px}
+.form{display:grid;gap:14px}
+.fg{display:grid;gap:4px}
+.form input[type=text],.form input[type=tel]{width:100%;padding:14px 16px;border-radius:10px;border:1.5px solid var(--line);background:var(--foam);font:inherit;font-size:.95rem}
+.form input:focus{border-color:var(--aqua);outline:none}
+.form .bad{border-color:var(--err)!important;background:#fff1f0!important}
+.err{display:none;color:var(--err);font-size:.78rem;font-weight:600}
+.err.on{display:block}
+.chk{display:flex;gap:10px;align-items:flex-start;font-size:.8rem;color:var(--gray);cursor:pointer;line-height:1.4}
+.chk input{width:18px;height:18px;flex-shrink:0;margin-top:1px;accent-color:var(--blue)}
+.chk a{color:var(--blue);text-decoration:underline}
+.ok{text-align:center;padding:12px 0}
+.ok b{display:block;font:700 1.2rem var(--disp);margin-bottom:8px}
+
+.pol .box{width:min(210mm,100%);padding:0;align-self:flex-start;margin:24px 0}
+.pol-bar{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 22px;background:var(--deep);color:#fff;border-radius:20px 20px 0 0;font-size:.9rem}
+.pol-bar .x{position:static}
+.pol-bar .x{color:#fff}
+.paper{padding:32px 36px;font-size:.95rem}
+.paper h1{font-size:1.3rem;margin-bottom:14px}
+@media print{body *{visibility:hidden}.pol.on,.pol.on *{visibility:visible}.pol.on{position:absolute;inset:0;background:#fff}.pol-bar{display:none}}
+
+@media(max-width:960px){
+ .hd nav{display:none}.hd .tel{margin-left:auto}
+ .hero-grid,.why,.zone,.app{grid-template-columns:1fr}
+ .hero-img{display:none}
+ .facts{grid-template-columns:1fr 1fr}.facts div:nth-child(3){padding-left:0;border-left:0}
+ .app{padding:36px 26px}.zone iframe{min-height:320px}.map-placeholder{min-height:320px}
+ .ft-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:640px){
+ .sec{padding:64px 0}
+ .acts .btn{width:100%}
+ .prod{grid-template-columns:80px 1fr;gap:10px 16px}
+ .prod img{width:80px;height:100px;max-width:100%;max-height:none;object-fit:contain;object-position:center;aspect-ratio:auto;grid-row:span 3;justify-self:center}
+ .prod .btn{grid-column:2;justify-self:start}
+ .hd .tel{display:none}.hd .btn{margin-left:auto}
+ .ft-grid{grid-template-columns:1fr}
+ .box{padding:36px 22px}.paper{padding:24px 20px}
+}
+</style>
+</head>
+<body>
+
+<header class="hd" id="hd">
+ <div class="wrap">
+  <a href="#hero" class="logo"><img src="https://poseidonaqua.ru/apple-touch-icon.png" alt="" width="42" height="42"><span>Посейдон</span></a>
+  <nav>
+   <a href="#products">Акции</a>
+   <a href="#zone">Доставка</a>
+   <a href="#gallery" data-s="gallery" hidden>Фотогалерея</a>
+   <a href="#app">Приложение</a>
+   <a href="#documents">Документы</a>
+   <a href="#news" data-s="news" hidden>Новости</a>
+   <a href="#reviews">Отзывы</a>
+  </nav>
+  <a class="tel" href="tel:+79681510110">+7 968 151-01-10</a>
+  <button class="btn btn-aqua btn-sm open-modal-btn" type="button">Заказать</button>
+ </div>
+</header>
+
+<main>
+ <section class="hero" id="hero">
+  <div class="wrap">
+   <div class="hero-grid">
+    <div class="txt">
+     <h1>Служба доставки питьевой воды<small>«Посейдон», Якутск</small></h1>
+     <p>Артезианская вода в бутылях 19 л после 7 ступеней очистки. Привезём в день заказа по Якутску.</p>
+     <div class="acts">
+      <a href="#products" class="btn btn-aqua">Выбрать воду</a>
+      <button class="btn btn-line open-modal-btn" type="button">Быстрый заказ</button>
+     </div>
+    </div>
+    <div class="hero-img"><img src="https://f1c324d9-e505-461a-bdef-1bfd3d197819.selstorage.ru/medium_bottle_primary_9fb013c4b3.png" alt="Бутыль воды 19 л" width="407" height="750" fetchpriority="high" decoding="async"></div>
+   </div>
+   <div class="facts">
+    <div><b>с 2020</b><span>доставляем воду</span></div>
+    <div><b>7 ступеней</b><span>очистки</span></div>
+    <div><b>40 000+</b><span>клиентов</span></div>
+    <div><b>09:00–20:00</b><span>время работы</span></div>
+   </div>
+  </div>
+  <div class="wave"><svg viewBox="0 0 1440 56" preserveAspectRatio="none"><path d="M0,28 C240,56 480,0 720,28 C960,56 1200,6 1440,32 L1440,56 L0,56 Z" fill="#fff"/></svg></div>
+ </section>
+
+ <section class="sec" id="advantages">
+  <div class="wrap why">
+   <div>
+    <h2>Вода, которой доверяют</h2>
+    <p class="lead">Семьи, офисы и производства Якутска заказывают у нас воду уже несколько лет.</p>
+    <ul class="adv">
+     <li><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/><path d="M9 14l2 2 4-4"/></svg></i><div><h3>7 ступеней очистки</h3><p>Многоступенчатая система фильтрации и УФ-стерилизатор.</p></div></li>
+     <li><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></i><div><h3>Быстрая доставка</h3><p>Привезём воду прямо к порогу — часто в день заказа.</p></div></li>
+     <li><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></i><div><h3>40 000+ клиентов</h3><p>Нам доверяют семьи, офисы и производства.</p></div></li>
+     <li><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/></svg></i><div><h3>Бонусная система</h3><p>Меняйте бонусы на товары в мобильном приложении.</p></div></li>
+    </ul>
+   </div>
+   <div class="video"><div class="embed-placeholder video-placeholder" data-embed="video" data-src="https://rutube.ru/play/embed/7d7d9de3a2004a3d3a65869aea0791ab/?r=wd"><div class="embed-placeholder-content"><span>Видео о Посейдоне</span><button class="btn btn-aqua" type="button" data-load-embed>Загрузить видео</button><small>Видео загрузится автоматически, когда вы прокрутите страницу до этого блока</small></div></div></div>
+  </div>
+ </section>
+
+ <section class="sec foam" id="products">
+  <div class="wrap">
+   <div class="head"><h2>Акции и ассортимент</h2><p class="lead">Цены за бутыль 19 л. Оставьте заявку — оператор уточнит детали.</p></div>
+   <div class="promo" id="dynamic-promos" hidden></div>
+   <div>
+    <article class="prod">
+     <img src="https://f1c324d9-e505-461a-bdef-1bfd3d197819.selstorage.ru/medium_bottle_primary_9fb013c4b3.png" alt="Вода 19 л" loading="lazy" decoding="async" width="407" height="750">
+     <div><h3>Вода 19 л</h3><p>Чистая питьевая вода</p></div>
+     <div class="price">250 руб.</div>
+     <button class="btn btn-blue open-modal-btn" type="button">Сделать заказ</button>
+    </article>
+    <article class="prod">
+     <img src="https://f1c324d9-e505-461a-bdef-1bfd3d197819.selstorage.ru/medium_bottle_mineral_c843e04ccc.png" alt="Минерализованная вода 19 л" loading="lazy" decoding="async" width="407" height="750">
+     <div><h3>Вода 19 л</h3><p>Минерализованная вода</p></div>
+     <div class="price">270 руб.</div>
+     <button class="btn btn-blue open-modal-btn" type="button">Сделать заказ</button>
+    </article>
+    <article class="prod">
+     <img src="https://f1c324d9-e505-461a-bdef-1bfd3d197819.selstorage.ru/medium_bottle_empty_b9c5c6b055.png" alt="Тара 19 л" loading="lazy" decoding="async" width="407" height="750">
+     <div><h3>Тара 19 л</h3><p>Возвратная тара</p></div>
+     <div class="price">390 руб.</div>
+     <button class="btn btn-blue open-modal-btn" type="button">Сделать заказ</button>
+    </article>
+   </div>
+  </div>
+ </section>
+
+ <section class="sec" id="zone">
+  <div class="wrap">
+   <div class="zone">
+    <div class="txt">
+     <h2>Доставим воду туда, где она нужна</h2>
+     <p>На карте — зона доставки по Якутску. Оставьте заявку, и мы перезвоним в течение 10 минут.</p>
+     <button class="btn btn-aqua open-modal-btn" type="button">Оставить заявку</button>
+    </div>
+    <div class="map-placeholder embed-placeholder" data-embed="map" data-src="https://yandex.ru/map-widget/v1/?um=constructor%3Ab50f5b6d5cd243ea9ba4b348ea9b1fd009cd93b4175348fc735ae96043fbccf9&amp;source=constructor&amp;scroll=false"><div class="embed-placeholder-content"><span>Карта зоны доставки</span><button class="btn btn-aqua" type="button" data-load-embed>Показать карту</button><small>Карта загрузится автоматически, когда вы прокрутите страницу до этого блока</small></div></div>
+   </div>
+  </div>
+ </section>
+
+ <section class="sec foam" id="gallery" data-s="gallery" hidden>
+  <div class="wrap">
+   <div class="head"><h2>Наше производство</h2></div>
+   <div class="gal" id="dynamic-gallery"></div>
+  </div>
+ </section>
+
+ <section class="sec" id="app">
+  <div class="wrap">
+   <div class="app">
+    <div>
+     <h2>Заказывайте в 2 клика</h2>
+     <p>Мобильное приложение «Посейдон»: заказ воды, история доставок, бонусы и акции — всё в одном месте.</p>
+     <div class="stores">
+      <a href="https://apps.apple.com/ru/app/посейдон/id1565813042" class="store" target="_blank" rel="noopener">
+       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71,19.5C17.88,20.74 17,21.95 15.66,21.97C14.32,22 13.89,21.18 12.37,21.18C10.84,21.18 10.37,21.95 9.1,22C7.79,22.05 6.8,20.68 5.96,19.47C4.25,17 2.94,12.45 4.7,9.39C5.57,7.87 7.13,6.91 8.82,6.88C10.1,6.86 11.32,7.75 12.11,7.75C12.89,7.75 14.37,6.68 15.92,6.84C16.57,6.87 18.39,7.1 19.56,8.82C19.47,8.88 17.39,10.1 17.41,12.63C17.44,15.65 20.06,16.66 20.09,16.67C20.06,16.74 19.67,18.11 18.71,19.5M13,3.5C13.73,2.67 14.94,2.04 15.94,2C16.07,3.17 15.6,4.35 14.9,5.19C14.21,6.04 13.07,6.7 11.95,6.61C11.8,5.46 12.36,4.26 13,3.5Z"/></svg>
+       <div><small>Загрузить в</small><strong>App Store</strong></div>
+      </a>
+      <a href="https://play.google.com/store/apps/details?id=org.vodopad.poseidon" class="store" target="_blank" rel="noopener">
+       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/></svg>
+       <div><small>Доступно в</small><strong>Google Play</strong></div>
+      </a>
+     </div>
+    </div>
+    <img src="https://f1c324d9-e505-461a-bdef-1bfd3d197819.selstorage.ru/medium_bottle_primary_9fb013c4b3.png" alt="Бутыль воды" loading="lazy" decoding="async" width="407" height="750">
+   </div>
+  </div>
+ </section>
+
+ <section class="sec" id="documents" style="padding-top:0">
+  <div class="wrap">
+   <div class="head"><h2>Качество подтверждено</h2></div>
+   <div class="docs">
+    <a class="doc" href="https://f1c324d9-e505-461a-bdef-1bfd3d197819.selstorage.ru/Deklaracziya_4c234fa4c1.pdf" target="_blank" rel="noopener"><img src="https://f1c324d9-e505-461a-bdef-1bfd3d197819.selstorage.ru/medium_Deklaracziya_76deefe868.jpg" alt="" loading="lazy" decoding="async" width="320" height="220"><span>Декларация</span></a>
+    <a class="doc" href="https://f1c324d9-e505-461a-bdef-1bfd3d197819.selstorage.ru/Svidetelstvo_IP_669411f77c.pdf" target="_blank" rel="noopener"><img src="https://f1c324d9-e505-461a-bdef-1bfd3d197819.selstorage.ru/medium_Svidetelstvo_IP_5149747231.jpg" alt="" loading="lazy" decoding="async" width="320" height="220"><span>Свидетельство ИП</span></a>
+   </div>
+  </div>
+ </section>
+
+ <section class="sec foam" id="news" data-s="news" hidden>
+  <div class="wrap">
+   <div class="head"><h2>Что нового</h2></div>
+   <div class="news" id="dynamic-news"></div>
+  </div>
+ </section>
+
+ <section class="sec" id="reviews">
+  <div class="wrap">
+   <div class="head"><h2>Нас рекомендуют</h2></div>
+   <div class="rev">
+    <blockquote><p>«Заказываем воду в офис уже второй год. Всегда вовремя, бутыли чистые, водители вежливые. Отдельное спасибо за приложение — заказ в два клика.»</p><div class="who"><i>АК</i><div>Анна К.<small>Офис-менеджер</small></div></div></blockquote>
+    <blockquote><p>«Попробовали минерализованную воду — вся семья перешла на неё. Вкус мягкий, никакого осадка. Доставка ни разу не подвела.»</p><div class="who"><i>ДС</i><div>Дмитрий С.<small>Постоянный клиент</small></div></div></blockquote>
+    <blockquote><p>«Нравится, что можно вернуть тару и получить бонусы. Вода действительно чистая, чайник без накипи. Рекомендую.»</p><div class="who"><i>ЕМ</i><div>Елена М.<small>Клиент с 2021 года</small></div></div></blockquote>
+   </div>
+  </div>
+ </section>
+</main>
+
+<footer class="ft">
+ <div class="wrap">
+  <div class="ft-grid">
+   <div><a href="#hero" class="logo"><img src="https://poseidonaqua.ru/apple-touch-icon.png" alt="" width="42" height="42"><span>Посейдон</span></a><p>Служба доставки чистой питьевой воды в бутылях 19 л. Работаем с 2020 года.</p></div>
+   <div><h4>Навигация</h4><nav><a href="#hero">Главная</a><a href="#app">Приложение</a><a href="#products">Акции</a></nav></div>
+   <div><h4>Контакты</h4><div class="ct"><a href="tel:+79681510110">+7 968 151-01-10</a><a href="tel:+74112732424">+7 4112 73-24-24</a><span>09:00 – 20:00</span></div></div>
+  </div>
+  <div class="ft-b">© 2025 ИП Бурнашев Ф. В.</div>
+ </div>
+</footer>
+
+<div class="modal" id="orderModal" role="dialog" aria-modal="true" aria-labelledby="orderTitle">
+ <div class="box">
+  <button class="x" type="button" data-close aria-label="Закрыть">&times;</button>
+  <div id="formView">
+   <h3 id="orderTitle">Оставить заявку</h3>
+   <p>Заполните данные, и мы свяжемся с вами.</p>
+   <form class="form" id="deliveryForm" novalidate>
+    <div class="fg"><input type="text" placeholder="Ваше имя" id="nameInput" autocomplete="name"><span class="err" id="nameError">Введите ваше имя</span></div>
+    <div class="fg"><input type="tel" placeholder="Телефон" id="phoneInput" autocomplete="tel"><span class="err" id="phoneError">Введите минимум 10 цифр</span></div>
+    <div class="fg"><input type="text" placeholder="Адрес доставки" id="addressInput" autocomplete="street-address"><span class="err" id="addressError">Введите адрес доставки</span></div>
+    <div class="fg">
+     <label class="chk"><input type="checkbox" id="agreeCheckbox"><span>Я согласен с <a href="#" id="openPolicyBtn">политикой конфиденциальности</a> и <a href="#" id="openPersonalDataBtn">политикой обработки персональных данных</a>.</span></label>
+     <span class="err" id="agreeError">Нужно подтвердить согласие</span>
+    </div>
+    <span class="err" id="formError"></span>
+    <button type="submit" class="btn btn-blue" id="sendBtn">Отправить</button>
+   </form>
+  </div>
+  <div class="ok" id="okView" hidden><b>Заявка отправлена</b>Перезвоним в течение 10 минут.</div>
+ </div>
+</div>
+
+<div class="modal pol" id="policyModal" role="dialog" aria-modal="true" aria-label="Политика конфиденциальности">
+ <div class="box">
+  <div class="pol-bar"><span>Политика конфиденциальности</span><span><button class="btn btn-aqua btn-sm" type="button" onclick="window.print()">Сохранить в PDF</button> <button class="x" type="button" data-close aria-label="Закрыть">&times;</button></span></div>
+  <div class="paper"><h1>Политика конфиденциальности</h1><p>Текст политики.</p></div>
+ </div>
+</div>
+
+<div class="modal pol" id="personalDataPolicyModal" role="dialog" aria-modal="true" aria-label="Политика обработки персональных данных">
+ <div class="box">
+  <div class="pol-bar"><span>Политика обработки персональных данных</span><span><button class="btn btn-aqua btn-sm" type="button" onclick="window.print()">Сохранить в PDF</button> <button class="x" type="button" data-close aria-label="Закрыть">&times;</button></span></div>
+  <div class="paper"><h1>Политика обработки персональных данных</h1><p>Текст политики.</p></div>
+ </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const $ = id => document.getElementById(id);
+  const hd = $('hd');
+  const onScroll = () => hd.classList.toggle('on', scrollY > 40);
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+  /* окна */
+  const open = m => { m.classList.add('on'); document.body.classList.add('lock'); };
+  const close = m => { m.classList.remove('on'); if (!document.querySelector('.modal.on')) document.body.classList.remove('lock'); };
+  const order = $('orderModal');
+  document.querySelectorAll('.open-modal-btn').forEach(b => b.addEventListener('click', () => {
+    $('formView').hidden = false; $('okView').hidden = true; open(order);
+  }));
+  document.querySelectorAll('.modal').forEach(m => {
+    m.addEventListener('click', e => { if (e.target === m || e.target.closest('[data-close]')) close(m); });
+  });
+  addEventListener('keydown', e => { if (e.key === 'Escape') document.querySelectorAll('.modal.on').forEach(close); });
+  $('openPolicyBtn').addEventListener('click', e => { e.preventDefault(); open($('policyModal')); });
+  $('openPersonalDataBtn').addEventListener('click', e => { e.preventDefault(); open($('personalDataPolicyModal')); });
+
+  /* форма заявки -> save_order.php */
+  const form = $('deliveryForm');
+  const check = (input, errId, ok) => {
+    const bad = !ok;
+    input.classList.toggle('bad', bad);
+    $(errId).classList.toggle('on', bad);
+    return ok;
+  };
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    const name = $('nameInput'), phone = $('phoneInput'), addr = $('addressInput'), agree = $('agreeCheckbox');
+    const valid = [
+      check(name, 'nameError', name.value.trim().length > 0),
+      check(phone, 'phoneError', phone.value.replace(/\D/g, '').length >= 10),
+      check(addr, 'addressError', addr.value.trim().length > 0),
+      check(agree, 'agreeError', agree.checked)
+    ].every(Boolean);
+    if (!valid) return;
+    const btn = $('sendBtn'), fe = $('formError');
+    fe.classList.remove('on'); btn.disabled = true; btn.textContent = 'Отправляем…';
+    try {
+      const res = await fetch('save_order.php', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: name.value.trim(), phone: phone.value.trim(), address: addr.value.trim() })
+      });
+      const data = await res.json();
+      if (data.status !== 'success') throw new Error(data.message || 'Ошибка отправки');
+      form.reset(); $('formView').hidden = true; $('okView').hidden = false;
+    } catch (err) {
+      fe.textContent = 'Не удалось отправить заявку. Позвоните нам: +7 968 151-01-10';
+      fe.classList.add('on');
+    } finally { btn.disabled = false; btn.textContent = 'Отправить'; }
+  });
+
+  /* данные из админки */
+  const fallbackData = {"promos.json":[{"id":"6aed92c9e46d2","image":"uploads/6aed92c9e41b6.webp"}],"gallery.json":[{"id":"6aed93a5967d4","image":"uploads/6aed93a5964a0.webp"},{"id":"6aed939e53fcb","image":"uploads/6aed939e53deb.webp"},{"id":"6aed93996afaf","image":"uploads/6aed93996ad0d.webp"},{"id":"6aed9395dacd5","image":"uploads/6aed9395daab1.webp"},{"id":"6aed938da190e","image":"uploads/6aed938da16d2.webp"}],"news.json":[{"id":"6aed95f918615","title":"Ура! Наслаждаемся не только чистой водой, но и приятными бонусами от «Посейдона»!","date":"04.03.2025","desc":"Теперь, заказывая воду через наше приложение, вы получаете кешбэк до 10%!","image":"uploads/6aed95f9183c5.webp"},{"id":"6aed95755e036","title":"Чистая экология - залог здоровья","date":"04.03.2025","desc":"Мы верим, что каждый шаг, направленный на защиту окружающей среды, имеет значение и мы сможем создать более чистое и здоровое будущее для следующих поколений.","image":"uploads/6aed95755dda1.webp"},{"id":"6aed95154df1d","title":"Сегодня компания Посейдон празднует свой 5‑летний юбилей!","date":"06.09.2025","desc":"За это время мы выросли из небольшого цеха с парой машин в одного из ведущих поставщиков чистой питьевой воды в нашем городе.","image":"uploads/6aed95154dbc1.webp"}]};
+  const t = '?t=' + Date.now();
+  const url = p => {
+    if (!p) return '';
+    const v = String(p).trim();
+    if (/^(https?:)?\/\//i.test(v) || v.startsWith('data:')) return v;
+    return new URL(v.replace(/^\/+/, ''), document.baseURI).href;
+  };
+  const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const load = (file, fn) => fetch('admin/data/' + file + t, { cache: 'no-store' })
+    .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+    .then(d => fn(Array.isArray(d) ? d : (fallbackData[file] || [])))
+    .catch(() => fn(fallbackData[file] || []));
+  const showSection = key => document.querySelectorAll('[data-s="' + key + '"]').forEach(el => el.hidden = false);
+  /* Видео и карта подгружаются по мере прокрутки: iframe создаётся,
+     когда блок подходит к экрану. Это не нагружает начальную загрузку страницы. */
+  const loadEmbed = holder => {
+    if (!holder || holder.dataset.loaded === '1' || !holder.dataset.src) return;
+    const frame = document.createElement('iframe');
+    frame.src = holder.dataset.src;
+    frame.title = holder.dataset.embed === 'map' ? 'Карта зоны доставки' : 'Видео о Посейдоне';
+    frame.loading = 'lazy';
+    frame.referrerPolicy = 'strict-origin-when-cross-origin';
+    frame.fetchPriority = 'low';
+    frame.allowFullscreen = true;
+    frame.allow = holder.dataset.embed === 'video'
+      ? 'encrypted-media; picture-in-picture; clipboard-write'
+      : 'fullscreen';
+    frame.style.display = 'block';
+    frame.style.width = '100%';
+    frame.style.height = '100%';
+    frame.style.minHeight = holder.dataset.embed === 'map' ? '420px' : 'auto';
+    frame.style.aspectRatio = holder.dataset.embed === 'video' ? '16 / 9' : 'auto';
+    frame.style.border = '0';
+    holder.dataset.loaded = '1';
+    holder.replaceChildren(frame);
+  };
+
+  /* Резервная ручная загрузка, если IntersectionObserver недоступен. */
+  document.addEventListener('click', e => {
+    const button = e.target.closest('[data-load-embed]');
+    if (button) loadEmbed(button.closest('[data-embed]'));
+  });
+
+  const embeds = document.querySelectorAll('[data-embed][data-src]');
+  if ('IntersectionObserver' in window) {
+    const embedObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        loadEmbed(entry.target);
+        observer.unobserve(entry.target);
+      });
+    }, { rootMargin: '250px 0px', threshold: 0.01 });
+    embeds.forEach(holder => embedObserver.observe(holder));
+  }
+
+
+  load('promos.json', d => {
+    const c = $('dynamic-promos'); c.hidden = false;
+    c.innerHTML = d.map(i => `<img src="${esc(url(i.image))}" alt="Акция" loading="lazy" decoding="async" width="1500" height="606" onerror="this.remove()">`).join('');
+  });
+  load('gallery.json', d => {
+    $('dynamic-gallery').innerHTML = d.map(i => `<img src="${esc(url(i.image))}" alt="Фото производства" loading="lazy" decoding="async" width="750" height="500" onerror="this.remove()">`).join('');
+    showSection('gallery');
+  });
+  load('news.json', d => {
+    $('dynamic-news').innerHTML = d.map(i => `
+      <article>
+        <img src="${esc(url(i.image))}" alt="" loading="lazy" decoding="async" width="1000" height="666" onerror="this.remove()">
+        <time>${esc(i.date)}</time>
+        <h3>${esc(i.title)}</h3>
+        <p>${esc(i.desc)}</p>
+      </article>`).join('');
+    showSection('news');
+  });
+});
+</script>
+</body>
+</html>
